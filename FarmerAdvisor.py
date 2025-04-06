@@ -10,7 +10,7 @@ from phi.utils.pprint import pprint_run_response
 
 class FarmerAdvisor:
 
-    def run(self,soil_ph,soil_moisture,temperature,rainfall):
+    def run_agent(self,soil_ph,soil_moisture,temperature,rainfall):
 
         FILE_PATH="C:/Users/hp/OneDrive/Desktop/Hackathon/Sustainable_farming/farmer_advisor_dataset.csv"
         data=readDataSet(FILE_PATH).to_dict()
@@ -38,5 +38,5 @@ class FarmerAdvisor:
         )
         question = f"I am a farmer my land soil ph is {soil_ph}, soil moisture is {soil_moisture}, temperature is {temperature}, rainfall in mm is {rainfall}. Taking this as input give me list of crops in order with fertilizers and pesticides used"
         
-        farmer: Iterator[RunResponse] = farmerAdvisor.run(question)
+        farmer = farmerAdvisor.run(question).content
         return farmer

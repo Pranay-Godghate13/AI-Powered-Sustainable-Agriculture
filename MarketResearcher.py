@@ -1,17 +1,14 @@
 from typing import List
-from rich.pretty import pprint
 from pydantic import BaseModel, Field
 from ReadDataSet import readDataSet
 from phi.agent import Agent, RunResponse
 from phi.model.ollama import Ollama
-from textwrap import dedent
 from typing import Iterator
-from phi.utils.pprint import pprint_run_response
 
 class MarketResearcher:
 
 
-    def run(self, financial_goals):
+    def run_agent(self, financial_goals):
         file_path = "C:/Users/hp/OneDrive/Desktop/Hackathon/Sustainable_farming/market_researcher_dataset.csv"
 
         data = readDataSet(file_path).to_dict()
@@ -23,7 +20,7 @@ class MarketResearcher:
 
         marketResearcher = Agent(
             name = "Market Research Agent",
-            model = Ollama(id="phi3"),
+            model = Ollama(id="llama3"),
             description="""You are a seasoned Market Research Analyst with deep 
             expertise in analyzing market trends, competitive landscapes, and 
             consumer behavior in US. Your role is to help farmers make data-driven 
@@ -45,6 +42,6 @@ class MarketResearcher:
         )
         question = f"This year my financial goal is: {financial_goals}. Please suggest ranking of the crop types."
 
-        market: Iterator[RunResponse] = marketResearcher.run(question)
+        market = marketResearcher.run(question).content
         return market
         # marketResearcher.print_response("market price 200 and competitor price",markdown=True,stream=True)
