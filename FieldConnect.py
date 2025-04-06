@@ -9,7 +9,7 @@ st.caption("Where Data Meets Dirt. Grow Smarter, Sell Smarter.")
 distributor = Distributor()
 coordinator = Coordinator()
 
-connection = sqlite3.connect('C:/Users/hp/OneDrive/Desktop/Agriculture_database.db',check_same_thread=False)
+connection = sqlite3.connect('C:/Users/hp/Documents/Database/Agriculture_database.db',check_same_thread=False,timeout=10)
 
 # Create the table if it doesn't exist
 connection.execute('''
@@ -20,7 +20,7 @@ connection.execute('''
         crops TEXT,
         goals TEXT,
         feedback TEXT,
-        comments TEXT
+        answer TEXT
     );
 ''')
 
@@ -41,6 +41,7 @@ if location:
         print(crop_preferences)
         if crop_preferences:
             financial_goals = st.text_input(label="Provide use with your financial goals:",placeholder="e.g: Get maximum returns, give minimum losses")
+            print(financial_goals)
             if financial_goals:
                 
                 with st.spinner(text = "Processing...", show_time=True):
@@ -62,29 +63,30 @@ if location:
                         with st.container():
                             st.write_stream(stream_data)
 
-                        col1, col2 = st.columns([1, 6])
-                        feedback = None
-                        with col1:
-                            if st.button("👍 Yes"):
-                                    feedback = "positive"
-                        with col2:
-                            if st.button("👎 No",):
-                                    feedback = "negative"
+                col1, col2 = st.columns([1, 6])
+                feedback = None
+                
+                # comments="No comments"
+                with col1:
+                        if st.button("👍 Yes",):
+                            feedback = "positive"
+                with col2:
+                    if st.button("👎 No",):
+                        feedback = "negative"
+                        
+                if feedback=="positive":
+                        st.success("Thanks for the thumbs up! 😊")
+                elif feedback=="negative":
+                        st.error("Thanks for your feedback. Help us try to improve by your valuable comments! 🙏")
+                        # comments = st.text_input(label="Comments",placeholder="Please add you comments here...")
+                        # # comments=x
+                        # print(comments)
+                        # if comments != "No comments":
+                        #     # comments=st.write(comments)
+                        #     st.success("Thank you for your comments! 😊")
+                    
+                query = "INSERT INTO Data VALUES (?, ?, ?, ?, ?,?)"
+                connection.execute(query, (location, soil_type, crop_preferences_str, financial_goals, feedback,answer))
 
-                        while feedback != None:
-                            # Show result
-                            comments="No comments"
-                            if feedback == "positive":
-                                st.success("Thanks for the thumbs up! 😊")
-                            if feedback == "negative":
-                                st.error("Thanks for your feedback. Help us try to improve by your valuable comments! 🙏")
-                                comments = st.text_input(label="Comments",placeholder="Please add you comments here...",label_visibility="collapsed")
-                                if comments !=None:
-                                    st.write(comments)
-                                    st.success("Thank you for your comments! 😊")
-                            
-                            query = "INSERT INTO Data VALUES (?, ?, ?, ?, ?, ?)"
-                            connection.execute(query, (location, soil_type, crop_preferences_str, financial_goals, feedback, comments))
-
-                            # Commit changes
-                            connection.commit()
+                    # Commit changes
+                connection.commit()

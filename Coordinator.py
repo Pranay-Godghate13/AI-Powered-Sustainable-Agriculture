@@ -68,11 +68,21 @@ class Coordinator:
                 - **Soil health**: Recommend methods for enhancing soil quality and fertility.
                 - **Pest and disease control**: Advise on reducing reliance on chemicals by using sustainable pest management practices.
                 - **Market insights**: Provide suggestions on market trends, pricing strategies, and how to maximize profits from the recommended crops"""
-            ],
+            ,"Avoid giving any extra information. and keep it simple"],
             markdown=True,
             show_tool_calls=True,
             agent_data=full_data,
-            expected_output="""Actionable Insights on the top 1 ranked crop followed by actionable insights for alternative Crop."""
+            expected_output="""
+
+            Actionable Insights on the top 1 recommended crop:
+            *Suggested Crop: {Name of the crop}
+            *Actionable insights: {Provide 3-5 short actionable insights in pointers}
+            
+            followed by
+
+            Actionable Insights on the top 2 recommended crop as a alternative:
+            *Suggested Crop: {Name of the crop}
+            *Actionable insights: {Provide 3-5 short actionable insights in pointers}"""
         )
 
         question = f"Provide me with actionable insights based on the data collected by famer advisor and market researcher."
