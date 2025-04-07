@@ -78,12 +78,12 @@ if location:
                         st.success("Thanks for the thumbs up! 😊")
                 elif feedback=="negative":
                         st.error("Thanks for your feedback. Help us try to improve by your valuable comments! 🙏")
-                        # comments = st.text_input(label="Comments",placeholder="Please add you comments here...")
-                        # # comments=x
-                        # print(comments)
-                        # if comments != "No comments":
-                        #     # comments=st.write(comments)
-                        #     st.success("Thank you for your comments! 😊")
+                        comments = st.text_input(label="Comments",placeholder="Please add you comments here...")
+                        # comments=x
+                        print(comments)
+                        if comments != "No comments":
+                            # comments=st.write(comments)
+                            st.success("Thank you for your comments! 😊")
                     
                 query = "INSERT INTO Data VALUES (?, ?, ?, ?, ?,?)"
                 connection.execute(query, (location, soil_type, crop_preferences_str, financial_goals, feedback,answer))
