@@ -9,7 +9,7 @@ class MarketResearcher:
 
 
     def run_agent(self, financial_goals):
-        file_path = "C:/Users/hp/OneDrive/Desktop/Hackathon/Sustainable_farming/market_researcher_dataset.csv"
+        file_path = "https://docs.google.com/spreadsheets/d/1KbUSwYDEfzNZzeM3Kr4MOKvNO9-0XRPw8VAE_FsT-fI/export?format=csv&sheet=market_advisor_dataset"
 
         data = readDataSet(file_path).to_dict()
 

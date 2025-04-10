@@ -12,7 +12,7 @@ class FarmerAdvisor:
 
     def run_agent(self,soil_ph,soil_moisture,temperature,rainfall):
 
-        FILE_PATH="C:/Users/hp/OneDrive/Desktop/Hackathon/Sustainable_farming/farmer_advisor_dataset.csv"
+        FILE_PATH="https://docs.google.com/spreadsheets/d/1KbUSwYDEfzNZzeM3Kr4MOKvNO9-0XRPw8VAE_FsT-fI/export?format=csv&sheet=farmer_advisor_dataset"
         data=readDataSet(FILE_PATH).to_dict()
 
         class FarmerSchema(BaseModel):
