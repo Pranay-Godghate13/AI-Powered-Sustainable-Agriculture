@@ -6,16 +6,16 @@ An innovative AI-driven multi-agent system designed to promote sustainable agric
 
 ## Key Features
 
-### 1. **Farmer Advisor**
+🌱 1. **Farmer Advisor** 🌾
 - Provides personalized recommendations for crop selection and management based on soil type, weather conditions, and historical data.
 
-### 2. **Market Researcher**
+📊  2. **Market Researcher** 📈
 - Analyzes pricing trends and market conditions to help farmers make informed decisions on crop sales and investments.
 
-### 3. **Multi-Agent AI Framework**
+🤖  3. **Multi-Agent AI Framework** 🧠
 - Coordinates interactions between various agents (e.g., farmers, weather stations, agricultural experts) for efficient decision-making.
 
-### 4. **Data Management**
+🗂️  4. **Data Management** 🛠️
 - Utilizes an SQLite database for storing and processing historical data, ensuring long-term learning and system improvement.
 
 ---
@@ -101,10 +101,6 @@ Contributions are welcome! Please follow these steps:
 2. Create a new branch for your feature/bugfix.
 3. Submit a pull request with detailed descriptions.
 
----
-
-## License
-This project is licensed under the [MIT License](LICENSE).
 
 ---
 
